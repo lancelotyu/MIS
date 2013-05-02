@@ -1,0 +1,625 @@
+﻿<link href="Resources/css/ViewCSS/sqs.css" rel="stylesheet" type="text/css" />
+<link href="Plugin/Parsley/css/bootstrap.css" rel="stylesheet" />
+<script type="text/javascript" src="Plugin/Parsley/js/parsley.js"></script>
+<section class="home">
+		<div class="navigation global-left-side">
+			<a href="###" class="control-button"><b></b></a>
+			<div class="contact-buttons">
+				<ul class="buttons">
+					<li class="receive">
+						<span class="icon"></span>
+						<span class="name">收件</span>
+					</li>
+					<li class="write">
+						<span class="icon"></span>
+						<span class="name">转件</span>
+					</li>
+				</ul>
+			</div>
+			<div id="navTreeps">
+			</div>
+		</div>
+<div class="global-body home_panel">
+<div align=center ><input type="button" class="neter-button-primary" value="验证"  onclick="javascript:$('form').parsley('validate')"></div>
+<div align=center ><input type="text"></input></div>
+
+<div align=center >
+
+<table border=0 cellpadding=0 cellspacing=0 width=643 style='border-collapse:
+ collapse;table-layout:fixed;width:484pt'>
+ <col width=55>
+ <col width=72 >
+ <col width=61 >
+ <col width=72 >
+ <col width=78 >
+ <col width=61 >
+ <col width=45 >
+ <col width=38 >
+ <col width=39 >
+ <col width=122 >
+ <tr height=44 >
+  <td colspan=10 height=44 class=xl7513968 width=643 style='height:33.0pt;
+  width:484pt'>土地登记申请书</td>
+ </tr>
+ <tr height=37 >
+  <td height=37 class=xl6513968 width=55 style='height:27.95pt;width:41pt'>编号：</td>
+  <td colspan=4 class=xl7613968 width=283 style='width:213pt'>　</td>
+  <td colspan=4 class=xl7713968 width=183 style='width:138pt'>单位：</td>
+  <td class=xl6613968 width=122 style='width:92pt'><form data-validate="parsley" name="form6" method="post" action="">
+        <label>
+          <input type="radio" name="RadioGroup3" value="单选" style='width:30%;height:100%' data-required="true">平方米</label>
+        <label>
+          <input name="RadioGroup3" type="radio" value="单选" checked style='width:30%;height:100%' data-required="true">公顷、万元</label>
+        <br>
+    </form>
+    </td>
+ </tr>
+ <tr height=37 >
+  <td rowspan=22 height=814 class=xl7813968 width=55 style='border-bottom:1.0pt solid black;height:614.9pt;border-top:none;width:41pt'>申<br>请<br>人<br>情<br>况</td>
+  <td colspan=9 class=xl8113968 width=588 style='border-right:1.0pt solid black;border-left:none;width:443pt'>登<span>&nbsp;</span>记<span>&nbsp; </span>申<span>&nbsp; </span>请<span>&nbsp;</span>人</td>
+ </tr>
+ <tr height=37>
+  <td colspan=9 height=37 class=xl8413968 width=588 style='border-right:1.0pt solid black;height:27.95pt;border-left:none;width:443pt'>
+  <form data-validate="parsley"  name="form1" method="post" action="">
+		<label>
+          <input type="radio" name="RadioGroup1" value="单选" style='width:15px;height:15px'>
+          所有权人</label>
+        <label>
+          <input type="radio" name="RadioGroup1" value="单选" style='width:15px;height:15px'>
+          使用权人</label>
+        <label>
+          <input type="radio" name="RadioGroup1" value="单选" style='width:15px;height:15px'>
+          抵押权人</label>
+        <label>
+          <input type="radio" name="RadioGroup1" value="单选" style='width:15px;height:15px;'>
+          需役权利人</label>
+        <label>
+          <input type="radio" name="RadioGroup1" value="单选" style='width:15px;height:15px'>
+          权利受让人</label>
+        <label>
+          <input type="radio" name="RadioGroup1" value="单选" style='width:15px;height:15px'>
+          更正登记申请人</label>
+        <br>
+        <label>
+          <input type="radio" name="RadioGroup1" value="单选" style='width:15px;height:15px'>
+          异议登记申请人</label>
+        <label>
+          <input type="radio" name="RadioGroup1" value="单选" style='width:15px;height:15px'>
+          预告登记申请人<span>&nbsp; </span></label>
+        <label>
+          <input type="radio" name="RadioGroup1" value="单选" style='width:15px;height:15px' data-required="true" data-error-message="请至少选择一个！">
+          其他</label>
+        <br>
+    </form>
+	</td>
+ </tr>
+ <tr height=37>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;height:27.95pt;border-left:none;width:100pt'>名称（姓名）</td>
+	<td colspan=7 class=xl8913968 width=455 style='border-right:1.0pt solid black;border-left:none;width:343pt'>
+	 <form  data-validate="parsley"  name="form2" method="post" action="">
+		<input field="QLRMC" type="text" name="textfield" class ="inputSQS" data-required="true">
+	</form>
+	</td>
+ </tr>
+ <tr height=37>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:100pt'>证件种类</td>
+  <td colspan=7 class=xl8913968 width=455 style='border-right:1.0pt solid black;
+  border-left:none;width:343pt'>
+	<form method="post" action="" data-validate="parsley">
+      <label>
+		<select  field="QLRZJLX" name="select" class="selectSQS" data-required="true">
+			<option>居民身份证</option>
+			<option>驾驶证</option>
+			<option>组织机构代码证</option>
+			<option>军官证</option>
+		</select>
+      </label>
+    </form>    
+</td>
+ </tr>
+ <tr height=37>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:100pt'>证件编号</td>
+  <td colspan=7 class=xl9213968 width=455 style='border-right:1.0pt solid black;border-left:none;width:343pt'>
+	<form method="post" action="" data-validate="parsley">
+		<input field="QLRDM" type="text" name="textfield3" class ="inputSQS" data-required="true" data-type="number" data-rangelength="[10,20]" data-trigger="keyup">
+	</form>
+</td>
+ </tr>
+ <tr height=37>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:100pt'>单位性质</td>
+  <td colspan=7 class=xl9513968 width=455 style='border-right:1.0pt solid black;border-left:none;width:343pt'>
+  <form method="post" action="" data-validate="parsley">
+      <label>
+        <select  field="QLRDWXZ"  name="select2" class="selectSQS" data-required="true">
+          <option>个人</option>
+          <option>集体</option>
+          <option>私营</option>
+          <option>有限公司</option>
+          <option>有限责任公司</option>
+        </select>
+        </label>
+    </form>
+    </td>
+ </tr>
+ <tr height=37>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;height:27.95pt;border-left:none;width:100pt'>通讯地址</td>
+  <td colspan=4 class=xl8913968 width=256 style='border-right:1.0pt solid black;border-left:none;width:193pt'>
+	<form method="post" action="" data-validate="parsley">
+		<input field="TXDZ" type="text" name="textfield5" class ="inputSQSCom" style="width:254px" data-required="true" data-maxlength="20" data-trigger="keyup">
+	</form></td>
+  <td colspan=2 class=xl8913968 width=77 style='border-right:1.0pt solid black;
+  border-left:none;width:58pt'>邮编：</td>
+  <td class=xl6713968 width=122 style='border-top:none;border-left:none;width:92pt'>
+	<form method="post" action="" data-validate="parsley">
+		<input field="QLRYB" type="text" name="textfield6" class ="inputSQSCom" style="width:120px" data-required="true" data-type="number" data-rangelength="[6,6]" data-trigger="keyup">
+	</form>
+	</td>
+ </tr>
+ <tr height=37>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;height:27.95pt;border-left:none;width:100pt'>法人代表人或负责人</td>
+  <td colspan=7 class=xl8913968 width=455 style='border-right:1.0pt solid black;border-left:none;width:343pt'>
+	<form method="post" action="" data-validate="parsley">
+		<input field="FRXM" type="text" name="textfield7" class ="inputSQS" data-required="true" data-maxlength="20" data-trigger="keyup">
+	</form>
+  </td>
+ </tr>
+ <tr height=37>
+  <td height=37 class=xl6813968 width=72 style='height:27.95pt;border-top:none;
+  border-left:none;width:54pt'>联系人：</td>
+  <td colspan=2 class=xl8913968 width=133 style='border-right:1.0pt solid black;
+  border-left:none;width:100pt'><input field="LXRXM" type="text" name="textfield8" class ="inputSQSCom" style="width:130px" data-required="true" data-maxlength="20" data-trigger="keyup"></td>
+  <td class=xl6913968 width=78 style='border-top:none;border-left:none;
+  width:59pt'>联系电话：</td>
+  <td colspan=2 class=xl9213968 width=106 style='border-right:1.0pt solid black;
+  border-left:none;width:80pt'><input field="LXRDH" type="text" name="textfield9" class ="inputSQSCom" style="width:104px" data-required="true" data-type="number" data-rangelength="[8,11] data-trigger="keyup"></td>
+  <td colspan=2 class=xl8913968 width=77 style='border-right:1.0pt solid black;
+  border-left:none;width:58pt'>电子邮件：</td>
+  <td class=xl6713968 width=122 style='border-top:none;border-left:none;
+  width:92pt'><input field="LXREMAIL" type="text" name="textfield10" class ="inputSQSCom" style="width:120px" data-required="true" data-type="number" data-rangelength="[10,20] data-trigger="keyup"></td>
+ </tr>
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:100pt'>代理人姓名</td>
+  <td colspan=2 class=xl8913968 width=150 style='border-right:1.0pt solid black;
+  border-left:none;width:113pt'><input field="DLRXM" type="text" name="textfield11" class ="inputSQSCom" style="width:148px" data-required="true" data-type="number" data-rangelength="[10,20] data-trigger="keyup"></td>
+  <td colspan=3 class=xl8913968 width=144 style='border-right:1.0pt solid black;
+  border-left:none;width:109pt'>职业资格证书号</td>
+  <td colspan=2 class=xl9213968 width=161 style='border-right:1.0pt solid black;
+  border-left:none;width:121pt'><input field="DLRDM" type="text" name="textfield12" class ="inputSQSCom" style="width:158px" data-required="true" data-type="number" data-rangelength="[10,20] data-trigger="keyup"></td>
+ </tr>
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td colspan=2 height=37 class=xl10013968 width=133 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:100pt'>代理机构名称</td>
+  <td colspan=2 class=xl10213968 width=150 style='border-right:1.0pt solid black;
+  border-left:none;width:113pt'><input field="DLRJG" type="text" name="textfield13" class ="inputSQSCom" style="width:148px" data-required="true" data-type="number" data-rangelength="[10,20] data-trigger="keyup"></td>
+  <td colspan=3 class=xl10413968 width=144 style='border-right:1.0pt solid black;
+  border-left:none;width:109pt'>联系电话</td>
+  <td colspan=2 class=xl10613968 width=161 style='border-right:1.0pt solid black;
+  border-left:none;width:121pt'><input field="DLRDH" type="text" name="textfield14" class ="inputSQSCom" style="width:158px" data-required="true" data-type="number" data-rangelength="[10,20] data-trigger="keyup"></td>
+ </tr>
+
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td colspan=9 height=37 class=xl8113968 width=588 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:443pt'>登<span
+  style='mso-spacerun:yes'>&nbsp; </span>记<span style='mso-spacerun:yes'>&nbsp;
+  </span>申<span style='mso-spacerun:yes'>&nbsp; </span>请<span
+  style='mso-spacerun:yes'>&nbsp; </span>人</td>
+ </tr>
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td colspan=9 height=37 class=xl9913968 width=588 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:443pt'><form name="form2" method="post" action="">
+     
+        <label>
+          <input type="radio" name="RadioGroup2" value="单选" style='width:15px;height:15px'>
+          抵押人</label>
+        <label>
+          <input type="radio" name="RadioGroup2" value="单选" style='width:15px;height:15px'>
+          供役地权利人</label>
+        <label>
+          <input type="radio" name="RadioGroup2" value="单选" style='width:15px;height:15px'>
+          权利转让人</label>
+        <label>
+          <input type="radio" name="RadioGroup2" value="单选" style='width:15px;height:15px'>
+          预告登记义务人</label>
+        <label>
+          <input type="radio" name="RadioGroup2" value="单选" style='width:15px;height:15px'>
+          其他</label>
+        <br>
+      
+    </form>    </td>
+ </tr>
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:100pt'>名称（姓名）</td>
+  <td colspan=7 class=xl8913968 width=455 style='border-right:1.0pt solid black;
+  border-left:none;width:343pt'><input field="YQLRMC" type="text" name="textfield15" class ="inputSQS"></td>
+ </tr>
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:100pt'>证件种类</td>
+  <td colspan=7 class=xl8913968 width=455 style='border-right:1.0pt solid black;
+  border-left:none;width:343pt'><select  field="YQLRZJLX" name="select3" class="selectSQS">
+      <option>居民身份证</option>
+      <option>驾驶证</option>
+      <option>组织机构代码证</option>
+      <option>军官证</option>
+    </select></td>
+ </tr>
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:100pt'>证件编号</td>
+  <td colspan=7 class=xl9213968 width=455 style='border-right:1.0pt solid black;
+  border-left:none;width:343pt'><input field="YQLRDM" type="text" name="textfield17" class ="inputSQS"></td>
+ </tr>
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:100pt'>单位性质</td>
+  <td colspan=7 class=xl9513968 width=455 style='border-right:1.0pt solid black;
+  border-left:none;width:343pt'><select  field="YQLRDWXZ" name="select4" class="selectSQS">
+      <option>个人</option>
+      <option>集体</option>
+      <option>私营</option>
+      <option>有限公司</option>
+      <option>有限责任公司</option>
+    </select></td>
+ </tr>
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:100pt'>通讯地址</td>
+  <td colspan=4 class=xl8913968 width=256 style='border-right:1.0pt solid black;
+  border-left:none;width:193pt'><input field="YTXDZ" type="text" name="textfield19" class ="inputSQSCom" style="width:254px"></td>
+  <td colspan=2 class=xl10813968 width=77 style='border-right:1.0pt solid black;
+  border-left:none;width:58pt'>邮编：</td>
+  <td class=xl6713968 width=122 style='border-top:none;border-left:none;
+  width:92pt'><input field="YQLRYB" type="text" name="textfield20" class ="inputSQSCom" style="width:120px"></td>
+ </tr>
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:100pt'>法人代表人或负责人</td>
+  <td colspan=7 class=xl8913968 width=455 style='border-right:1.0pt solid black;
+  border-left:none;width:343pt'><input field="YFRXM" type="text" name="textfield21"  class ="inputSQS"></td>
+ </tr>
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td height=37 class=xl6813968 width=72 style='height:27.95pt;border-top:none;
+  border-left:none;width:54pt'>联系人：</td>
+  <td colspan=2 class=xl8913968 width=133 style='border-right:1.0pt solid black;
+  border-left:none;width:100pt'><input field="YLXRXM" type="text" name="textfield22" class ="inputSQSCom" style="width:130px"></td>
+  <td class=xl6913968 width=78 style='border-top:none;border-left:none;
+  width:59pt'>联系电话：</td>
+  <td colspan=2 class=xl9213968 width=106 style='border-right:1.0pt solid black;
+  border-left:none;width:80pt'><input field="YLXRDH" type="text" name="textfield23" class ="inputSQSCom" style="width:104px"></td>
+  <td colspan=2 class=xl8913968 width=77 style='border-right:1.0pt solid black;
+  border-left:none;width:58pt'>电子邮件：</td>
+  <td class=xl6713968 width=122 style='border-top:none;border-left:none;
+  width:92pt'><input field="YLXREMAIL" type="text" name="textfield24" class ="inputSQSCom" style="width:120px"></td>
+ </tr>
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td colspan=2 height=37 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:100pt'>代理人姓名</td>
+  <td colspan=2 class=xl8913968 width=150 style='border-right:1.0pt solid black;
+  border-left:none;width:113pt'><input field="YDLRXM" type="text" name="textfield25" class ="inputSQSCom" style="width:148px"></td>
+  <td colspan=3 class=xl8913968 width=144 style='border-right:1.0pt solid black;
+  border-left:none;width:109pt'>职业资格证书号</td>
+  <td colspan=2 class=xl8913968 width=161 style='border-right:1.0pt solid black;
+  border-left:none;width:121pt'><input field="YDLRDM" type="text" name="textfield26" class ="inputSQSCom" style="width:158px"></td>
+ </tr>
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td colspan=2 height=37 class=xl10013968 width=133 style='border-right:1.0pt solid black;
+  height:27.95pt;border-left:none;width:100pt'>代理机构名称</td>
+  <td colspan=2 class=xl10213968 width=150 style='border-right:1.0pt solid black;
+  border-left:none;width:113pt'><input field="YDLRJG" type="text" name="textfield27" class ="inputSQSCom" style="width:148px"></td>
+  <td colspan=3 class=xl10413968 width=144 style='border-right:1.0pt solid black;
+  border-left:none;width:109pt'>联系电话</td>
+  <td colspan=2 class=xl10613968 width=161 style='border-right:1.0pt solid black;
+  border-left:none;width:121pt'><input field="YDLRDH" type="text" name="textfield28" class ="inputSQSCom" style="width:158px"></td>
+ </tr>
+ <tr height=36 style='mso-height-source:userset;height:27.0pt'>
+  <td rowspan=6 height=216 class=xl11413968 width=55 style='border-bottom:1.0pt solid black;
+  height:162.0pt;border-top:none;width:41pt'>土<br>地<br>情<br>况</td>
+  <td colspan=2 class=xl11813968 width=133 style='border-right:1.0pt solid black;
+  border-left:none;width:100pt'>坐<span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>落</td>
+  <td colspan=7 class=xl12013968 width=455 style='border-right:1.0pt solid black;
+  border-left:none;width:343pt'><input field="ZDZL" type="text" name="textfield29" class ="inputSQS"</td>
+ </tr>
+ <tr height=36 style='mso-height-source:userset;height:27.0pt'>
+  <td colspan=2 height=36 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.0pt;border-left:none;width:100pt'>面<span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>积</td>
+  <td colspan=2 class=xl9213968 width=150 style='border-right:1.0pt solid black;
+  border-left:none;width:113pt'><input field="ZDZL" type="text" name="textfield30"  class ="inputSQSCom" style="width:148px"></td>
+  <td colspan=3 class=xl8913968 width=144 style='border-right:1.0pt solid black;
+  border-left:none;width:109pt'>用<span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp; </span>途</td>
+  <td colspan=2 class=xl8913968 width=161 style='border-right:1.0pt solid black;
+  border-left:none;width:121pt'><select  field="SJYTDM" name="select5" style='width:100%;height:47%;border:none;border-bottom:1.0pt solid black'>
+    <option>071</option>
+    <option>080</option>
+    </select>
+    <select  field="SJYT" name="select6" style='width:100%;height:47%;border:none'>
+      <option>出让</option>
+      <option>划拨</option>
+        </select></td>
+ </tr>
+ <tr height=36 style='mso-height-source:userset;height:27.0pt'>
+  <td colspan=2 height=36 class=xl6913968 width=133 style='height:27.0pt;
+  width:100pt'>权利设定情况</td>
+  <td colspan=2 class=xl14513968 width=150 style='border-left:none;width:113pt'><form  field="QLSDQK" name="form5" method="post" action="">
+    <label><input type="checkbox" name="checkbox" value="checkbox">地表</label>
+    <label><input type="checkbox" name="checkbox2" value="checkbox">地上</label>
+    <label><input type="checkbox" name="checkbox3" value="checkbox">地下</label></form>
+  </td>
+  <td colspan=3 class=xl6913968 width=144 style='border-left:none;width:109pt'>取得价格</td>
+  <td colspan=2 class=xl6913968 width=161 style='border-left:none;width:121pt'><input field="QDJG" type="text" name="textfield32" class ="inputSQSCom" style="width:158px"></td>
+ </tr>
+ <tr height=36 style='mso-height-source:userset;height:27.0pt'>
+  <td colspan=2 height=36 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.0pt;border-left:none;width:100pt'>权属性质</td>
+  <td colspan=7 class=xl8913968 width=455 style='border-right:1.0pt solid black;
+  border-left:none;width:343pt'>
+    <select  field="QSXZ" name="select7" class="selectSQS">
+      <option>国有建设用地使用权</option>
+      <option>国有农用地使用权</option>
+      <option>集体土地所有权</option>
+      <option>集体建设用地使用权</option>
+      <option>宅基地使用权</option>
+      <option>集体农用地使用权</option>
+        </select>
+  </td>
+ </tr>
+ <tr height=36 style='mso-height-source:userset;height:27.0pt'>
+  <td colspan=2 rowspan=2 height=72 class=xl11013968 width=133
+  style='border-right:1.0pt solid black;border-bottom:1.0pt solid black;
+  height:54.0pt;width:100pt'>使用权类型</td>
+  <td class=xl6913968 width=72 style='border-top:none;border-left:none;
+  width:54pt'>国有</td>
+  <td colspan=6 class=xl8913968 width=383 style='border-right:1.0pt solid black;
+  border-left:none;width:289pt'>
+    <select field="GSYQLX" name="select8" class="selectSQSCom" style="width:382px">
+      <option>划拨</option>
+      <option>出让</option>
+      <option>作价出资（入股）</option>
+      <option>租赁</option>
+      <option>授权经营</option>
+      <option>其他</option>
+        </select>
+  </td>
+ </tr>
+ <tr height=36 style='mso-height-source:userset;height:27.0pt'>
+  <td height=36 class=xl7013968 width=72 style='height:27.0pt;border-top:none;
+  border-left:none;width:54pt'>集体</td>
+  <td colspan=6 class=xl10413968 width=383 style='border-right:1.0pt solid black;
+  border-left:none;width:289pt'>
+    <select  field="JSYQLX" name="select9"  class="selectSQSCom" style="width:382px">
+      <option>荒地拍卖</option>
+      <option>批准拨用地宅基地</option>
+      <option>批准拨用企业用地</option>
+      <option>集体土地入股（联营）</option>
+      <option>其他</option>
+        </select>
+  </td>
+ </tr>
+ <tr height=37 style='mso-height-source:userset;height:27.95pt'>
+  <td height=37 class=xl7113968 width=55 style='height:27.95pt;width:41pt;text-align:center'>需役地坐落</td>
+  <td colspan=9 class=xl13213968 width=588 style='border-right:1.0pt solid black;
+  border-left:none;width:443pt'>
+    <input field="JSYQLX" type="text" name="textfield362"  class="inputSQSCom" style="width:588px">
+  </td>
+ </tr>
+ <tr height=36 style='mso-height-source:userset;height:27.0pt'>
+  <td rowspan=3 height=108 class=xl13513968 width=55 style='border-bottom:1.0pt solid black;
+  height:81.0pt;border-top:none;width:41pt'>土地<br>抵押<br>情况</td>
+  <td colspan=2 class=xl11813968 width=133 style='border-right:1.0pt solid black;
+  border-left:none;width:100pt'>土地价格</td>
+  <td colspan=7 class=xl12013968 width=455 style='border-right:1.0pt solid black;
+  border-left:none;width:343pt'>
+    <input field="JSYQLX" type="text" name="textfield363" class="inputSQSCom" style="width:454px">
+</td>
+ </tr>
+ <tr height=36 style='mso-height-source:userset;height:27.0pt'>
+  <td colspan=2 height=36 class=xl8713968 width=133 style='border-right:1.0pt solid black;
+  height:27.0pt;border-left:none;width:100pt'>土地抵押面积</td>
+  <td colspan=2 class=xl8913968 width=150 style='border-right:1.0pt solid black;
+  border-left:none;width:113pt'>
+    <input field="JSYQLX" type="text" name="textfield364" class="inputSQSCom" style="width:148px"></td>
+  <td colspan=3 class=xl8913968 width=144 style='border-right:1.0pt solid black;
+  border-left:none;width:109pt'>土地抵押金额</td>
+  <td colspan=2 class=xl8913968 width=161 style='border-right:1.0pt solid black;
+  border-left:none;width:121pt'>
+    <input field="JSYQLX" type="text" name="textfield365" class="inputSQSCom" style="width:158px"></td>
+ </tr>
+ <tr height=36 style='mso-height-source:userset;height:27.0pt'>
+  <td colspan=2 height=36 class=xl10013968 width=133 style='border-right:1.0pt solid black;
+  height:27.0pt;border-left:none;width:100pt'>土地抵押期限</td>
+  <td colspan=7 class=xl10413968 width=455 style='border-right:1.0pt solid black;border-left:none;width:343pt'>自<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+  年<span>&nbsp;&nbsp;&nbsp; </span>月<span>&nbsp;&nbsp;&nbsp; </span>日至<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+  年<span>&nbsp;&nbsp;&nbsp; </span>月<span>&nbsp;&nbsp;&nbsp; </span>日</td>
+ </tr>
+ <tr height=36>
+  <td rowspan=6 height=216 class=xl11413968 width=55 style='border-bottom:1.0pt solid black;
+  height:162.0pt;border-top:none;width:41pt'>申<br>请<br>登<br>记<br>的<br>内<br>容</td>
+  <td colspan=9 rowspan=6 class=xl12413968 width=588 style='border-right:1.0pt solid black;
+  border-bottom:1.0pt solid black;width:443pt'><textarea field="SQDJNR" type="text" name="textfield37" class="inputSQSCom" 
+	style="resize:none;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	text-align:center;
+	width:588px;
+	height:216px;
+	line-height:216px"></textarea></td>
+ </tr>
+ <tr height=36> </tr>
+ <tr height=36> </tr>
+ <tr height=36> </tr>
+ <tr height=36> </tr>
+ <tr height=36> </tr>
+ <tr height=36>
+  <td rowspan=5 height=180 class=xl11413968 width=55 style='border-bottom:1.0pt solid black;
+  height:135.0pt;border-top:none;width:41pt;text-align:center'>备<br>注</td>
+  <td colspan=9 rowspan=5 class=xl12413968 width=588 style='border-right:1.0pt solid black;
+  border-bottom:1.0pt solid black;width:443pt'><textarea field="SQBZ" type="text" name="textfield38" class="inputSQSCom" 
+	style="resize:none;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	text-align:center;
+	width:588px;
+	height:180px;
+	line-height:180px"></textarea></td>
+ </tr>
+ <tr height=36> </tr>
+ <tr height=36> </tr>
+ <tr height=36> </tr>
+ <tr height=36> </tr>
+ <tr height=36>
+  <td colspan=10 height=36 class=xl14013968 width=643 style='border-right:1.0pt solid black;height:27.0pt;width:484pt'>　</td>
+ </tr>
+ <tr height=36 >
+  <td colspan=10 height=36 class=xl14313968 width=643 style='border-right:1.0pt solid black;
+  height:27.0pt;width:484pt'>本申请人对填写的上述内容及提交申请材料的真实性负责。</td>
+ </tr>
+ <tr height=36>
+  <td colspan=10 height=36 class=xl14313968 width=643 style='border-right:1.0pt solid black;
+  height:27.0pt;width:484pt'>　</td>
+ </tr>
+ <tr height=36 style='mso-height-source:userset;height:27.0pt'>
+  <td height=36 class=xl7213968 width=55 style='height:27.0pt;width:41pt'>　</td>
+  <td colspan=2 class=xl13813968 width=133 style='width:100pt'>申请人签章：</td>
+  <td colspan=3 class=xl13813968 width=211 style='width:159pt'></td>
+  <td colspan=2 class=xl13813968 width=83 style='width:63pt'>申请人签章：</td>
+  <td colspan=2 class=xl13813968 width=161 style='border-right:1.0pt solid black;width:121pt'></td>
+ </tr>
+ <tr height=36>
+  <td height=36 class=xl7313968 width=55 style='height:27.0pt;width:41pt'>　</td>
+  <td colspan=3 class=xl14613968 width=205 style='width:154pt'>年<span>&nbsp; </span>月<span>&nbsp;
+  </span>日</td>
+  <td colspan=2 class=xl14613968 width=139 style='width:105pt'>　</td>
+  <td colspan=3 class=xl14613968 width=122 style='width:92pt'>年<span>&nbsp; </span>月<span>&nbsp;
+  </span>日</td>
+  <td class=xl7413968 width=122 style='width:92pt'>　</td>
+ </tr>
+
+ <tr height=0 style='display:none'>
+  <td width=55 style='width:41pt'></td>
+  <td width=72 style='width:54pt'></td>
+  <td width=61 style='width:46pt'></td>
+  <td width=72 style='width:54pt'></td>
+  <td width=78 style='width:59pt'></td>
+  <td width=61 style='width:46pt'></td>
+  <td width=45 style='width:34pt'></td>
+  <td width=38 style='width:29pt'></td>
+  <td width=39 style='width:29pt'></td>
+  <td width=122 style='width:92pt'></td>
+ </tr>
+
+</table>
+
+</div>
+</div>
+</section>
+	<script src="Plugin/jquery-easyui-1.3.2/jquery.easyui.min.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+	(function() {
+		var tl = $('#themesList');
+		var skin = new Neter.Skin();
+		var accordion = new Neter.Accordion({
+			width : 'auto',
+			container : $('#navTreeps'),
+			items : [{
+				name : 'sps41'
+			}, {
+				name : 'sps412',
+				data : '自定义数据'
+			}, {
+				name : '案件查询'
+			}, {
+				name : ''
+			}, {
+				name : '文件中心',
+				subMenus : [{
+					name : '网盘'
+				}, {
+					name : '附件'
+				}, {
+					name : '云附件'
+				}, {
+					name : '相册'
+				}]
+			}],
+			itemEvent : function(accordion, options) {
+				options.name == '收件' && navigation.active(options.name);
+				// console.log(options);
+				alert(options.name);
+			}
+		})
+		.render()
+		// 自动选择第2个菜单，并且触发菜单事件，如果不想触发传递第二个参数为false
+		.selected(0, false);
+		//自动展开文件中心
+		accordion.method["toggle"]("文件中心");
+		
+		var nav = $('.navigation'),
+			flag = 1,
+			orig = {
+				width : nav.width(),
+				height : nav.height()
+			};
+		
+		// 给左侧增加显示与隐藏滚动条事件，这个事件只有在出现滚动条时能看出效果。
+		$('#navTree')
+			.mouseenter(function() { $(this).css({'overflow' : 'auto'}); })
+			.mouseleave(function() { $(this).css('overflow', 'hidden'); })
+			// 当滚动了窗口则增加一个阴影。
+			.scroll(function(e) {
+				$('.contact-buttons').css('box-shadow' , $(this).scrollTop() > 0 ? '-2px 2px 6px rgba(0, 0, 0, .1)' : '');
+			});;
+		
+		// 窗口调整大小时进行重新页面布局
+		$(window).resize(function() {
+			var height = $('#view').height($('body').height() - $('#header').height()).height(),
+				nw     = nav.width();
+			
+			$('.home_panel').width($('body').width() - (nw > 15 ? 200 : 0)).height(height).css('left', nw > 15 ? 201 : 0);
+			
+			(nw > 15) && nav.height($('.home_panel').height());
+			
+			$('#navTreeps').css('height', height - 55);
+			
+			// 当左侧列表宽度大于15时，即为展开状态，这时候需要更新原始左侧的大小。
+			nw > 15 && (orig = {
+				width : nav.width(),
+				height : nav.height()
+			});
+		}).trigger('resize');
+		
+		// 展开与折叠左侧列事件
+		$('.control-button').live('click', function() {
+			var self = $(this);
+			
+			// 互斥执行下面的两组事件
+			!~(flag = flag * -1)
+				// 折叠事件
+				? $('.navigation').animate({ width  : 0 }, 20, function() {
+					  $(this).find('b').css('background', 'url(Resources/images/arrow_right.png) no-repeat 0 0 ');
+					  $(window).trigger('resize');
+				  })
+				// 展开事件
+				: $('.navigation').animate({ width : orig.width }, 20, function() {
+					  $(this).find('b').css('background', 'url(Resources/images/arrow_left.png) no-repeat 0 0 ');
+					  $(window).trigger('resize');
+				  });
+		});
+	})();
+</script>
+	
+	
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<style>
+		.content{ width:260px; height:480px; padding:20px; overflow:auto; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; float:left;}
+				}
+	</style>
+	<!-- Custom scrollbars CSS -->
+	<link href="jquery.mCustomScrollbar.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="content" class="content">
+	<h2>过滤表单</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>测试动态过滤表单</div>
+	</div>
+	<div style="margin:10px 0;">
+		<span>选择方法: </span>
+		<select onchange="$('#dg').datagrid({singleSelect:(this.value==0)})">
+			<option value="0">单选</option>
+			<option value="1">多选</option>
+		</select>
+	</div>
+	<div style="margin:auto;">
+		<a href="#" class="easyui-linkbutton" onclick="getSelected()">获取选择列</a>
+		<a href="#" class="easyui-linkbutton" onclick="getSelections()">获取选择多列</a>
+	</div>
+	<div style="margin:10px 0;"></div>
+	
+		<table id="dg" class="easyui-datagrid" title="测试表单" style="width:1235px;height:900px;margin:auto"></table>
+	
+	<div id="tb" style="padding:5px;height:auto">
+		<div>
+			起始日期: <input class="easyui-datebox" style="width:80px">
+			结束日期: <input class="easyui-datebox" style="width:80px">
+			类型: 
+			<select class="easyui-combobox" panelHeight="auto" style="width:100px">
+				<option value="初始登记">初始登记</option>
+				<option value="转让登记">转让登记</option>
+				<option value="抵押登记">抵押登记</option>
+				<option value="变更登记">变更登记</option>
+				<option value="地籍调查">地籍调查</option>
+			</select>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-search">查询</a>
+		</div>
+	</div>
+	</div>
+	<!-- Google CDN jQuery with fallback to local -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<!-- custom scrollbars plugin -->
+	<script src="jquery.mCustomScrollbar.concat.min.js"></script>
+	<script>
+		(function($){
+			$(window).load(function(){
+				$("#content").mCustomScrollbar({
+					scrollButtons:{
+						enable:true
+					},
+					theme:"dark-thick"
+				});
+			});
+		})(jQuery);
+	</script>
+</body>
+</html>

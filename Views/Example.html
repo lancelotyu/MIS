@@ -1,0 +1,339 @@
+﻿<section class="home">
+		<div class="navigation global-left-side">
+			<a href="###" class="control-button"><b></b></a>
+			<div class="contact-buttons">
+				<ul class="buttons">
+					<li class="receive">
+						<span class="icon"></span>
+						<span class="name">收件</span>
+					</li>
+					<li class="write">
+						<span class="icon"></span>
+						<span class="name">转件</span>
+					</li>
+				</ul>
+			</div>
+			<div id="navTreeps">
+			</div>
+		</div>
+		<div class="global-body home_panel" id="ex">
+		<div><input type="button" class="neter-button-primary" value="确定"  onclick="GoToUrl()"></div>
+		<h2>过滤表单</h2>
+			<div class="demo-info">
+				<div class="demo-tip icon-tip"></div>
+				<div>测试动态过滤表单</div>
+			</div>
+			<div style="margin:10px 0;">
+				<span>选择方法: </span>
+				<select onchange="$('#dg').datagrid({singleSelect:(this.value==0)})">
+					<option value="0">单选</option>
+					<option value="1">多选</option>
+				</select>
+			</div>
+			<div style="margin:10px 0;">
+				<a href="#" class="easyui-linkbutton" onclick="getSelected()">获取选择列</a>
+				<a href="#" class="easyui-linkbutton" onclick="getSelections()">获取选择多列</a>
+			</div>
+			<div style="margin:10px 0;"></div>
+			<table id="dg" class="easyui-datagrid" title="测试表单" style="width:1235px;height:500px;margin:auto"></table>
+			<div id="tb" style="padding:5px;height:auto">
+				<div>
+					<input id="ss">
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="Plugin/jquery-easyui-1.3.2/jquery.easyui.min.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+function ObjectToString(ob) {
+    var s = "";
+    for (var i in ob) {
+        s += i + " : " + ob[i] + "\n";
+    }
+    return s;
+}
+
+	$('#ss').searchbox({  
+    searcher:function(value){ 
+		var json = [];
+		
+		$.getJSON('datagrid.json', function (e) {
+			var eLength=e.length;
+			for(var i=0;i<e.length;i++){
+				//alert('e:'+e.length+'i:'+i);
+				var _SJDBH = e[i]['SJDBH'];
+				if(_SJDBH!= value){
+					e.splice(i,1);
+					i=i-1;
+				}
+				
+			}
+			//alert(e.length);
+            $('#dg').datagrid('loadData',e);	    
+	});
+
+    },  
+    prompt:'输入你要查询的值'  
+});  
+	(function() {
+		var tl = $('#themesList');
+		var skin = new Neter.Skin();
+		var accordion = new Neter.Accordion({
+			width : 'auto',
+			container : $('#navTreeps'),
+			items : [{
+				name : 'ex待办案件'
+			}, {
+				name : '案件汇总',
+				data : '自定义数据'
+			}, {
+				name : '案件查询'
+			}, {
+				name : ''
+			}, {
+				name : '文件中心',
+				subMenus : [{
+					name : '网盘'
+				}, {
+					name : '附件'
+				}, {
+					name : '云附件'
+				}, {
+					name : '相册'
+				}]
+			}],
+			itemEvent : function(accordion, options) {
+				options.name == '收件' && navigation.active(options.name);
+				// console.log(options);
+				alert(options.name);
+			}
+		})
+		.render()
+		// 自动选择第2个菜单，并且触发菜单事件，如果不想触发传递第二个参数为false
+		.selected(0, false);
+		//自动展开文件中心
+		accordion.method["toggle"]("文件中心");
+		
+		var nav = $('.navigation'),
+			flag = 1,
+			orig = {
+				width : nav.width(),
+				height : nav.height()
+			};
+		
+		// 给左侧增加显示与隐藏滚动条事件，这个事件只有在出现滚动条时能看出效果。
+		$('#navTree')
+			.mouseenter(function() { $(this).css({'overflow' : 'auto'}); })
+			.mouseleave(function() { $(this).css('overflow', 'hidden'); })
+			// 当滚动了窗口则增加一个阴影。
+			.scroll(function(e) {
+				$('.contact-buttons').css('box-shadow' , $(this).scrollTop() > 0 ? '-2px 2px 6px rgba(0, 0, 0, .1)' : '');
+			});;
+		
+		// 窗口调整大小时进行重新页面布局
+		$(window).resize(function() {
+			var height = $('#view').height($('body').height() - $('#header').height()).height(),
+				nw     = nav.width();
+			//alert(nw);
+			$('#ex').width($('body').width() - (nw > 15 ? 201 : 0)).height(height).css('left', nw > 15 ? 201 : 0);
+			
+			//alert($('body').width() - (nw > 15 ? 201 : 0));
+			(nw > 15) && nav.height($('#ex').height());
+			
+			$('#navTreeps').css('height', height - 55);
+			
+			// 当左侧列表宽度大于15时，即为展开状态，这时候需要更新原始左侧的大小。
+			nw > 15 && (orig = {
+				width : nav.width(),
+				height : nav.height()
+			});
+		}).trigger('resize');
+		
+		// 展开与折叠左侧列事件
+		$('.control-button').live('click', function() {
+			var self = $(this);
+			
+			// 互斥执行下面的两组事件
+			!~(flag = flag * -1)
+				// 折叠事件
+				? $('.navigation').animate({ width  : 0 }, 20, function() {
+					  $(this).find('b').css('background', 'url(Resources/images/arrow_right.png) no-repeat 0 0 ');
+					  $(window).trigger('resize');
+				  })
+				// 展开事件
+				: $('.navigation').animate({ width : orig.width }, 20, function() {
+					  $(this).find('b').css('background', 'url(Resources/images/arrow_left.png) no-repeat 0 0 ');
+					  $(window).trigger('resize');
+				  });
+		});
+	})();
+</script>
+	
+	<script type="text/javascript">
+	function GoToUrl(){
+			var nav = $('.navigation');
+			//Neter.Navigation.method.loadData($('#view'), null, 'Views/sqs4.html', true, true);
+			var url = 'Views/sqs4.html';
+            if (url) {
+                //var params = true ? { v : Math.random() } : {};
+                $.get(url, true, function(data) { $('#view>.neter-navigation-view').empty().html(data); }, 'html');
+            } else {
+                //view.empty().html(content);
+            }
+		}
+		function getSelected(){
+			var row = $('#dg').datagrid('getSelected');
+			if (row){
+				$.messager.alert('收件单编号', row.SJDBH+":"+row.DJH+":"+row.NAME);
+			}
+		}
+		function getSelections(){
+			var ss = [];
+			var rows = $('#dg').datagrid('getSelections');
+			for(var i=0; i<rows.length; i++){
+				var row = rows[i];
+				ss.push('<span>'+row.SJDBH+":"+row.DJH+":"+row.NAME+'</span>');
+			}
+			$.messager.alert('收件单编号', ss.join('<br/>'));
+		}
+		
+		function getRow(rowIndex){
+			var ss = [];
+			var rows = $('#dg').datagrid('getRows');
+			for(var i=0; i<rows.length; i++){
+				var row = rows[rowIndex];
+				ss.push('<span>'+row.SJDBH+":"+row.DJH+":"+row.NAME+'</span>');
+			}
+			$.messager.alert('收件单编号', ss.join('<br/>'));
+		}
+	
+		$(function(){
+			$('#dg').datagrid({
+				onHeaderContextMenu: function(e, field){
+					e.preventDefault();
+					if (!cmenu){
+						createColumnMenu();
+					}
+					cmenu.menu('show', {
+						left:e.pageX,
+						top:e.pageY
+					});
+				}
+			});
+		});
+		var cmenu;
+		function createColumnMenu(){
+			cmenu = $('<div/>').appendTo('body');
+			cmenu.menu({
+				onClick: function(item){
+					if (item.iconCls == 'icon-ok'){
+						$('#dg').datagrid('hideColumn', item.name);
+						cmenu.menu('setIcon', {
+							target: item.target,
+							iconCls: 'icon-empty'
+						});
+					} else {
+						$('#dg').datagrid('showColumn', item.name);
+						cmenu.menu('setIcon', {
+							target: item.target,
+							iconCls: 'icon-ok'
+						});
+					}
+				}
+			});
+			var fields = $('#dg').datagrid('getColumnFields');
+			for(var i=0; i<fields.length; i++){
+				var field = fields[i];
+				var col = $('#dg').datagrid('getColumnOption', field);
+				cmenu.menu('appendItem', {
+					text: col.title,
+					name: field,
+					iconCls: 'icon-ok'
+				});
+			}
+		}
+		
+		function pagerFilter(data){
+			if (typeof data.length == 'number' && typeof data.splice == 'function'){	// is array
+				data = {
+					total: data.length,
+					rows: data
+				}
+			}
+			var dg = $(this);
+			var opts = dg.datagrid('options');
+			var pager = dg.datagrid('getPager');
+			pager.pagination({
+				onSelectPage:function(pageNum, pageSize){
+					opts.pageNumber = pageNum;
+					opts.pageSize = pageSize;
+					pager.pagination('refresh',{
+						pageNumber:pageNum,
+						pageSize:pageSize
+					});
+					dg.datagrid('loadData',data);
+				}
+			});
+			if (!data.originalRows){
+				data.originalRows = (data.rows);
+			}
+			var start = (opts.pageNumber-1)*parseInt(opts.pageSize);
+			var end = start + parseInt(opts.pageSize);
+			data.rows = (data.originalRows.slice(start, end));
+			return data;
+		}
+		
+		$(function(){
+			$('#dg').datagrid({
+				iconCls:'icon-ok',
+				remoteSort:false,
+				rownumbers:true,
+				singleSelect:true,
+				autoRowHeight:true,
+				
+				pagination:true,
+				pageSize:10,
+				loadFilter:pagerFilter,
+				singleSelect:true,
+				collapsible:true,
+				url:'datagrid1.json',
+				toolbar:'#tb',
+				striped: true,
+				mothod:'get',
+				columns:[[
+					{field:'SJDBH',title:'收件单编号',width:120,align:'center',sortable:true},
+					{field:'DJH',title:'地籍号',width:150,align:'center',sortable:true},
+					{field:'NAME',title:'交件人',width:170,align:'center',sortable:true},
+					{field:'TDZL',title:'土地坐落',width:240,align:'center',sortable:true},
+					{field:'HJ',title:'环节',width:80,align:'center',sortable:true},
+					{field:'AJLX',title:'案件类型',width:130,align:'center',sortable:true},
+					{field:'SJRQ',title:'收件日期',width:150,sortable:true,align:'center',
+						sorter:function(a,b){
+							a = a.split('/');
+							b = b.split('/');
+							if (a[2] == b[2]){
+								if (a[0] == b[0]){
+									return (a[1]>b[1]?1:-1);
+								} else {
+									return (a[0]>b[0]?1:-1);
+								}
+							} else {
+								return (a[2]>b[2]?1:-1);
+							}
+						}
+					},
+					{field:'LC',title:'流程',width:40,align:'center'},
+					{ field:'Confirmation',title:'审核',width:80,
+                    formatter: function (Confirmation, rowIndex) {
+                        if (Confirmation == "1") {
+                            return '<div><input type="submit" id="Confirmation" href="#" class="btn btn-blue" onclick="getRow('+rowIndex+')" disabled ></input></div>'
+                        }
+                        else {
+                            return '<div><input type="submit" id="Confirmation" href="#" class="btn btn-blue"  onclick="getRow('+rowIndex+')" ></input></div>'
+                        }
+                    }}
+				]]
+			});
+		});
+	</script>

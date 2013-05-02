@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" > 
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta charset="UTF-8">
+	<title>测试表格</title>
+	<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.3.2/themes/metro/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.3.2/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.3.2/themes/style.css">
+	<link rel="stylesheet" type="text/css" href="jquery.mCustomScrollbar.css">
+	<script type="text/javascript" src="../jquery-easyui-1.3.2/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery-easyui-1.3.2/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="jquery.mCustomScrollbar.concat.min.js"></script>
+	<style>
+		.content{ width:260px; height:480px; padding:20px; overflow:auto; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; float:left;}
+	</style>
+</head>
+<body>
+<div id="content" class="content">
+	<h2>过滤表单</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>测试动态过滤表单</div>
+	</div>
+	<div style="margin:10px 0;">
+		<span>选择方法: </span>
+		<select onchange="$('#dg').datagrid({singleSelect:(this.value==0)})">
+			<option value="0">单选</option>
+			<option value="1">多选</option>
+		</select>
+	</div>
+	<div style="margin:auto;">
+		<a href="#" class="easyui-linkbutton" onclick="getSelected()">获取选择列</a>
+		<a href="#" class="easyui-linkbutton" onclick="getSelections()">获取选择多列</a>
+	</div>
+	<div style="margin:10px 0;"></div>
+	
+		<table id="dg" class="easyui-datagrid" title="测试表单" style="width:1235px;height:900px;margin:auto"></table>
+	
+	<div id="tb" style="padding:5px;height:auto">
+		<div>
+			起始日期: <input class="easyui-datebox" style="width:80px">
+			结束日期: <input class="easyui-datebox" style="width:80px">
+			类型: 
+			<select class="easyui-combobox" panelHeight="auto" style="width:100px">
+				<option value="初始登记">初始登记</option>
+				<option value="转让登记">转让登记</option>
+				<option value="抵押登记">抵押登记</option>
+				<option value="变更登记">变更登记</option>
+				<option value="地籍调查">地籍调查</option>
+			</select>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-search">查询</a>
+		</div>
+	</div>
+	</div>
+	<script>
+		(function($){
+			$(window).load(function(){
+				$("body,.content").mCustomScrollbar({
+					scrollInertia:150,
+					scrollButtons:{
+						enable:true
+					}
+				});
+			});
+		})(jQuery);
+	</script>
+	<script type="text/javascript">
+		function getSelected(){
+			var row = $('#dg').datagrid('getSelected');
+			if (row){
+				$.messager.alert('收件单编号', row.SJDBH+":"+row.DJH+":"+row.NAME);
+			}
+		}
+		function getSelections(){
+			var ss = [];
+			var rows = $('#dg').datagrid('getSelections');
+			for(var i=0; i<rows.length; i++){
+				var row = rows[i];
+				ss.push('<span>'+row.SJDBH+":"+row.DJH+":"+row.NAME+'</span>');
+			}
+			$.messager.alert('收件单编号', ss.join('<br/>'));
+		}
+		
+		function getRow(rowIndex){
+			var ss = [];
+			var rows = $('#dg').datagrid('getRows');
+			for(var i=0; i<rows.length; i++){
+				var row = rows[rowIndex];
+				ss.push('<span>'+row.SJDBH+":"+row.DJH+":"+row.NAME+'</span>');
+			}
+			$.messager.alert('收件单编号', ss.join('<br/>'));
+		}
+	
+		$(function(){
+			$('#dg').datagrid({
+				onHeaderContextMenu: function(e, field){
+					e.preventDefault();
+					if (!cmenu){
+						createColumnMenu();
+					}
+					cmenu.menu('show', {
+						left:e.pageX,
+						top:e.pageY
+					});
+				}
+			});
+		});
+		var cmenu;
+		function createColumnMenu(){
+			cmenu = $('<div/>').appendTo('body');
+			cmenu.menu({
+				onClick: function(item){
+					if (item.iconCls == 'icon-ok'){
+						$('#dg').datagrid('hideColumn', item.name);
+						cmenu.menu('setIcon', {
+							target: item.target,
+							iconCls: 'icon-empty'
+						});
+					} else {
+						$('#dg').datagrid('showColumn', item.name);
+						cmenu.menu('setIcon', {
+							target: item.target,
+							iconCls: 'icon-ok'
+						});
+					}
+				}
+			});
+			var fields = $('#dg').datagrid('getColumnFields');
+			for(var i=0; i<fields.length; i++){
+				var field = fields[i];
+				var col = $('#dg').datagrid('getColumnOption', field);
+				cmenu.menu('appendItem', {
+					text: col.title,
+					name: field,
+					iconCls: 'icon-ok'
+				});
+			}
+		}
+		
+		function pagerFilter(data){
+			if (typeof data.length == 'number' && typeof data.splice == 'function'){	// is array
+				data = {
+					total: data.length,
+					rows: data
+				}
+			}
+			var dg = $(this);
+			var opts = dg.datagrid('options');
+			var pager = dg.datagrid('getPager');
+			pager.pagination({
+				onSelectPage:function(pageNum, pageSize){
+					opts.pageNumber = pageNum;
+					opts.pageSize = pageSize;
+					pager.pagination('refresh',{
+						pageNumber:pageNum,
+						pageSize:pageSize
+					});
+					dg.datagrid('loadData',data);
+				}
+			});
+			if (!data.originalRows){
+				data.originalRows = (data.rows);
+			}
+			var start = (opts.pageNumber-1)*parseInt(opts.pageSize);
+			var end = start + parseInt(opts.pageSize);
+			data.rows = (data.originalRows.slice(start, end));
+			return data;
+		}
+		
+		$(function(){
+			$('#dg').datagrid({
+				iconCls:'icon-ok',
+				remoteSort:false,
+				rownumbers:true,
+				singleSelect:true,
+				autoRowHeight:true,
+				
+				pagination:true,
+				pageSize:10,
+				loadFilter:pagerFilter,
+				singleSelect:true,
+				collapsible:true,
+				url:'../datagrid1.json',
+				toolbar:'#tb',
+				striped: true,
+				mothod:'get',
+				columns:[[
+					{field:'SJDBH',title:'收件单编号',width:120,align:'center',sortable:true},
+					{field:'DJH',title:'地籍号',width:150,align:'center',sortable:true},
+					{field:'NAME',title:'交件人',width:170,align:'center',sortable:true},
+					{field:'TDZL',title:'土地坐落',width:240,align:'center',sortable:true},
+					{field:'HJ',title:'环节',width:80,align:'center',sortable:true},
+					{field:'AJLX',title:'案件类型',width:130,align:'center',sortable:true},
+					{field:'SJRQ',title:'收件日期',width:150,sortable:true,align:'center',
+						sorter:function(a,b){
+							a = a.split('/');
+							b = b.split('/');
+							if (a[2] == b[2]){
+								if (a[0] == b[0]){
+									return (a[1]>b[1]?1:-1);
+								} else {
+									return (a[0]>b[0]?1:-1);
+								}
+							} else {
+								return (a[2]>b[2]?1:-1);
+							}
+						}
+					},
+					{field:'LC',title:'流程',width:40,align:'center'},
+					{ field:'Confirmation',title:'审核',width:80,
+                    formatter: function (Confirmation, rowIndex) {
+                        if (Confirmation == "1") {
+                            return '<div><input type="submit" id="Confirmation" href="#" class="btn btn-blue" onclick="getRow('+rowIndex+')" disabled ></input></div>'
+                        }
+                        else {
+                            return '<div><input type="submit" id="Confirmation" href="#" class="btn btn-blue"  onclick="getRow('+rowIndex+')" ></input></div>'
+                        }
+                    }}
+				]]
+			});
+		});
+	</script>
+</body>
+</html>

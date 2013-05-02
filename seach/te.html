@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>通用查询</title>
+		<link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="themes/icon.css">
+		<script type="text/javascript" src="jquery-1.8.0.min.js"></script>
+		<script type="text/javascript" src="jquery.easyui.min.js"></script>
+		
+
+	</head>
+	<body style="margin:0px">
+			<!-- start 列表区 -->
+	<div class="divgrid">
+		<table border="0" cellspacing="5px">
+			<tr>
+				<td valign="top"><table id="leftGroupGrid" toolbar="#search"></table></td>
+				<td valign="top"><table id="rightItemGrid"></table></td>
+			</tr>
+		</table>
+	</div>
+	<!-- end  列表区 -->
+	
+	<!-- start搜索框 -->
+	<div id="search" style="padding-top: 3px;">
+		<a href="javascript:void(0)" id="lbtnadd" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="insertGroupRow();">增加</a>
+		组名<input type="text" id="txtGroupName" value="${groupname}" style="width:80px"></input>
+		描述<input type="text" id="txtRemark" value="${remark}"   style="width:80px"></input>
+		类型<select id="txtType" >
+				<ef:option groupname="DicType"  selectedValue="${type}" link="true" flag="true"></ef:option>
+			</select>
+		<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="selectItemValue();">查询</a>
+	</div>
+	<!-- end搜索框 -->
+	</body>
+	<script>
+			//组grid创建
+		$(function(){
+			$('#leftGroupGrid').datagrid({
+				title:'字典表分组',
+			 	iconCls:'icon-ok',
+			 	singleSelect:true,
+				fitColumns: true,
+			    nowrap:false,
+			    striped: true,
+			    collapsible:true,
+			    url:'datagrid1.json',
+				loadMsg:'请稍候,系统正在处理请求...',
+				dataType: 'json',
+				pagination:true,
+                rownumbers:true,
+			    remoteSort:false,
+				columns:[[
+					{field:'groupname',title:'组名',sortable:true,editor:'text'},
+					{field:'remark',title:'描述',sortable:true,editor:'text'},
+					{field:'type',title:'数据类型'},
+					{field:'dicDicType',title:'字典表分类'},
+					{field:'action',title:'操作',align:'center'}
+				]],
+				onBeforeLoad:function(){
+					$('leftGroupGrid').datagrid('rejectChanges');
+					$('#lbtnadd').linkbutton('enable');
+
+				},
+				//双击行事件（根据组名查询组中的值信息）
+				onDblClickRow:function(rowIndex,rowData){group = rowData.groupname;$(document).ready(function(){rightItemGrid();});},
+				//用户开始编辑一行时触发
+				onBeforeEdit:function(index,row){row.editing = true;$('#leftGroupGrid').datagrid('refreshRow',index);},
+				//当用户完成编辑一行时触发
+				onAfterEdit:function(index,row,changes){saveGroupRow(index,row,changes);row.editing = false;$('#leftGroupGrid').datagrid('refreshRow',index);},
+				//当用户取消编辑一行时触发
+				onCancelEdit:function(index,row){row.editing = false;$('#leftGroupGrid').datagrid('rejectChanges');}
+			});
+			  //设置分页控件   
+		    $('#leftGroupGrid').datagrid('getPager').pagination({   
+		        pageSize: 10,//每页显示的记录条数，默认为10   
+		        pageList: [5,10,15],//可以设置每页记录条数的列表   
+		        beforePageText: '第',//页数文本框前显示的汉字   
+		        afterPageText: '页    共 {pages} 页',   
+		        displayMsg: '当前显示 {from} - {to} 条记录   共 {total} 条记录', 
+		    });
+		});
+		
+	</script>
+		
+</html>
